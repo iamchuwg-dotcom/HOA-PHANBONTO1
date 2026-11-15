@@ -6,7 +6,7 @@
   <title>Chuyên Đề: Phân Bón - Tổ 1</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Newsreader (Serif thanh lịch) & Be Vietnam Pro (Sans-serif hiện đại, chuẩn tiếng Việt) -->
+  <!-- Google Fonts: Newsreader & Be Vietnam Pro -->
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
@@ -14,8 +14,8 @@
         extend: {
           colors: {
             ivory: '#F7FAF5',
-            sage: '#EFF6EE',
-            moss: '#143625',
+            sage: '#EBF3E8',
+            moss: '#132A1E',
             forest: '#1E7E48',
             leaf: '#2E9E5B',
             sun: '#D9A024',
@@ -32,12 +32,12 @@
   <style>
     body {
       background-color: #F7FAF5;
-      color: #143625;
+      color: #132A1E;
       font-family: 'Be Vietnam Pro', sans-serif;
       overflow: hidden;
     }
 
-    /* Hiệu ứng chuyển slide mượt mà, nhẹ nhàng như lật trang sách */
+    /* Hiệu ứng chuyển slide mượt mà như lật trang tạp chí */
     .slide {
       position: absolute;
       inset: 0;
@@ -60,22 +60,22 @@
 
     .slide-container {
       width: 100%;
-      max-width: 1040px;
+      max-width: 1080px;
       margin: auto;
     }
 
     /* Đường kẻ mảnh tinh tế */
     .hairline-b {
-      border-bottom: 1px solid rgba(20, 54, 37, 0.14);
+      border-bottom: 1px solid rgba(19, 42, 30, 0.14);
     }
     .hairline-t {
-      border-top: 1px solid rgba(20, 54, 37, 0.14);
+      border-top: 1px solid rgba(19, 42, 30, 0.14);
     }
     .hairline-l {
-      border-left: 1px solid rgba(20, 54, 37, 0.18);
+      border-left: 1px solid rgba(19, 42, 30, 0.18);
     }
 
-    /* Tùy chỉnh thanh cuộn khi xem trên màn hình nhỏ */
+    /* Tùy chỉnh thanh cuộn trên màn hình nhỏ */
     .slide::-webkit-scrollbar {
       width: 4px;
     }
@@ -87,9 +87,9 @@
 </head>
 <body class="min-h-screen relative selection:bg-forest selection:text-ivory">
 
-  <!-- Mảng màu hữu cơ mềm mại làm nền (Organic Soft Shapes) -->
+  <!-- Mảng màu hữu cơ mềm mại làm nền -->
   <div class="fixed -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-sage pointer-events-none opacity-90"></div>
-  <div class="fixed -bottom-40 -left-24 w-[420px] h-[420px] rounded-full bg-[#E6F1E4] pointer-events-none opacity-80"></div>
+  <div class="fixed -bottom-40 -left-24 w-[420px] h-[420px] rounded-full bg-[#E4EFE0] pointer-events-none opacity-80"></div>
 
   <!-- Họa tiết nhánh lá mảnh mai góc phải trên -->
   <svg class="fixed top-6 right-8 w-28 h-28 text-forest/15 pointer-events-none hidden sm:block" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -111,10 +111,10 @@
     </button>
   </header>
 
-  <!-- KHU VỰC NỘI DUNG 12 TRANG -->
+  <!-- KHU VỰC NỘI DUNG 12 SLIDE -->
   <main id="deck" class="relative w-full h-screen">
 
-    <!-- TRANG 1: MỞ ĐẦU (Bố cục trung tâm thanh thoát kiểu bìa tạp chí) -->
+    <!-- SLIDE 1: MỞ ĐẦU -->
     <section class="slide active" data-name="Mở đầu">
       <div class="slide-container text-center max-w-3xl">
         <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-forest font-semibold mb-6">
@@ -136,11 +136,10 @@
       </div>
     </section>
 
-    <!-- TRANG 2: THÀNH VIÊN TỔ 1 (Danh sách 2 cột đường kẻ ngang thanh lịch, không đóng khung) -->
+    <!-- SLIDE 2: THÀNH VIÊN TỔ 1 (10 thành viên) -->
     <section class="slide" data-name="Thành viên Tổ 1">
       <div class="slide-container">
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          <!-- Cột tiêu đề bên trái -->
           <div class="lg:col-span-4 lg:pt-2">
             <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">Nhóm thực hiện</span>
             <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2 leading-tight">
@@ -155,7 +154,6 @@
             </div>
           </div>
 
-          <!-- Cột danh sách 10 người dạng dòng kẻ mảnh -->
           <div class="lg:col-span-8">
             <div class="grid sm:grid-cols-2 gap-x-10">
               <div class="py-3.5 hairline-b flex items-baseline gap-4">
@@ -204,7 +202,7 @@
       </div>
     </section>
 
-    <!-- TRANG 3: KHÁI NIỆM PHÂN BÓN (Bố cục trích dẫn mở rộng + 2 ý bổ trợ dọc) -->
+    <!-- SLIDE 3: KHÁI NIỆM PHÂN BÓN -->
     <section class="slide" data-name="Khái niệm phân bón">
       <div class="slide-container max-w-4xl">
         <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">I. Tổng quan</span>
@@ -212,14 +210,12 @@
           Khái niệm phân bón
         </h2>
 
-        <!-- Ý chính nổi bật dạng câu dẫn lớn -->
         <div class="pl-6 sm:pl-8 border-l-2 border-forest mb-10">
           <p class="font-serif text-2xl sm:text-3xl text-moss leading-relaxed">
             “Phân bón là sản phẩm có chứa các <span class="text-forest italic">chất dinh dưỡng cần thiết</span> cho cây trồng.”
           </p>
         </div>
 
-        <!-- Hai ý tiếp theo trình bày thoáng ngang -->
         <div class="grid sm:grid-cols-2 gap-8 pt-6 hairline-t">
           <div>
             <div class="text-xs font-semibold uppercase tracking-widest text-sun mb-2">Mục đích</div>
@@ -237,7 +233,7 @@
       </div>
     </section>
 
-    <!-- TRANG 4: PHÂN LOẠI PHÂN BÓN (Dòng chảy 3 nhánh phân cách bằng đường kẻ dọc mảnh) -->
+    <!-- SLIDE 4: PHÂN LOẠI PHÂN BÓN -->
     <section class="slide" data-name="Phân loại phân bón">
       <div class="slide-container">
         <div class="max-w-2xl mb-12">
@@ -251,7 +247,6 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-8 md:gap-0">
-          <!-- Nhánh 1 -->
           <div class="md:pr-8">
             <span class="font-serif italic text-3xl text-forest">01</span>
             <h3 class="text-xl sm:text-2xl font-semibold text-moss mt-3 mb-2">
@@ -262,7 +257,6 @@
             </p>
           </div>
 
-          <!-- Nhánh 2 -->
           <div class="md:px-8 md:hairline-l">
             <span class="font-serif italic text-3xl text-sun">02</span>
             <h3 class="text-xl sm:text-2xl font-semibold text-moss mt-3 mb-2">
@@ -273,7 +267,6 @@
             </p>
           </div>
 
-          <!-- Nhánh 3 -->
           <div class="md:pl-8 md:hairline-l">
             <span class="font-serif italic text-3xl text-leaf">03</span>
             <h3 class="text-xl sm:text-2xl font-semibold text-moss mt-3 mb-2">
@@ -287,120 +280,198 @@
       </div>
     </section>
 
-    <!-- TRANG 5: PHÂN BÓN HỮU CƠ (Bố cục bất đối xứng 2 cột: Tiêu đề & Ví dụ bên trái - Danh sách bên phải) -->
+    <!-- SLIDE 5: PHÂN BÓN HỮU CƠ (Có khung gắn hình 'huuco.jpg' bên phải) -->
     <section class="slide" data-name="Phân bón hữu cơ">
       <div class="slide-container">
-        <div class="grid lg:grid-cols-12 gap-10 items-center">
-          <div class="lg:col-span-5">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Cột nội dung bên trái -->
+          <div class="lg:col-span-7">
             <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">Nhóm 01</span>
             <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2 leading-tight">
-              Phân bón <br/><span class="italic text-forest">hữu cơ</span>
+              Phân bón <span class="italic text-forest">hữu cơ</span>
             </h2>
-            <div class="mt-6 p-5 rounded-2xl bg-sage">
-              <div class="text-xs font-semibold uppercase tracking-wider text-forest mb-1">Ví dụ phổ biến</div>
-              <p class="text-base font-medium text-moss">
-                Phân chuồng, phân xanh, phân compost.
-              </p>
+
+            <div class="mt-6 space-y-4">
+              <div class="pb-4 hairline-b flex gap-4">
+                <span class="text-forest font-serif italic text-lg">01.</span>
+                <p class="text-base sm:text-lg text-moss leading-relaxed">
+                  Có nguồn gốc từ chất thải động vật, thực vật và các chất hữu cơ.
+                </p>
+              </div>
+              <div class="pb-4 hairline-b flex gap-4">
+                <span class="text-forest font-serif italic text-lg">02.</span>
+                <p class="text-base sm:text-lg text-moss leading-relaxed">
+                  Giúp cải tạo đất, tăng độ tơi xốp.
+                </p>
+              </div>
+              <div class="pb-4 hairline-b flex gap-4">
+                <span class="text-forest font-serif italic text-lg">03.</span>
+                <p class="text-base sm:text-lg text-moss leading-relaxed">
+                  Bổ sung chất hữu cơ và dinh dưỡng cho đất.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-6 inline-flex flex-wrap items-center gap-2 text-sm text-moss/85 bg-sage px-4 py-2.5 rounded-full">
+              <span class="font-semibold text-forest">Ví dụ:</span>
+              <span>Phân chuồng, phân xanh, phân compost.</span>
             </div>
           </div>
 
-          <div class="lg:col-span-7 space-y-6">
-            <div class="pb-5 hairline-b flex gap-5">
-              <span class="text-forest font-serif italic text-xl">•</span>
-              <p class="text-lg sm:text-xl text-moss leading-relaxed">
-                Có nguồn gốc từ chất thải động vật, thực vật và các chất hữu cơ.
-              </p>
+          <!-- Cột khung hình ảnh bên phải: huuco.jpg -->
+          <div class="lg:col-span-5">
+            <div class="relative aspect-[4/3] w-full rounded-3xl overflow-hidden bg-sage/70 border border-dashed border-forest/35 flex items-center justify-center">
+              <img
+                src="huuco.jpg"
+                alt="Minh họa phân bón hữu cơ"
+                class="w-full h-full object-cover"
+                onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+              />
+              <!-- Khung dự phòng hiển thị hướng dẫn khi chưa có file huuco.jpg -->
+              <div class="hidden text-center p-6 flex flex-col items-center justify-center">
+                <svg class="w-10 h-10 text-forest/45 mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="text-xs uppercase tracking-widest text-forest font-semibold">Khung ảnh minh họa</span>
+                <code class="mt-1.5 px-3 py-1 rounded-full bg-ivory text-moss font-mono text-xs border border-moss/15">huuco.jpg</code>
+                <p class="mt-2 text-xs text-moss/60 max-w-[220px]">Đặt file ảnh <strong>huuco.jpg</strong> cùng thư mục với file HTML để tự động hiển thị.</p>
+              </div>
             </div>
-            <div class="pb-5 hairline-b flex gap-5">
-              <span class="text-forest font-serif italic text-xl">•</span>
-              <p class="text-lg sm:text-xl text-moss leading-relaxed">
-                Giúp cải tạo đất, tăng độ tơi xốp.
-              </p>
-            </div>
-            <div class="flex gap-5">
-              <span class="text-forest font-serif italic text-xl">•</span>
-              <p class="text-lg sm:text-xl text-moss leading-relaxed">
-                Bổ sung chất hữu cơ và dinh dưỡng cho đất.
-              </p>
-            </div>
+            <p class="mt-2.5 text-center font-serif italic text-xs text-moss/60">
+              Hình 1. Các nguồn phân bón hữu cơ tự nhiên
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRANG 6: PHÂN BÓN HÓA HỌC (Bố cục phân tầng: Đặc điểm trên - Bảng liệt kê nguyên tố N, P, K, NPK dưới) -->
+    <!-- SLIDE 6: PHÂN BÓN HÓA HỌC (Có khung gắn hình 'voco.jpg' cân đối với nội dung) -->
     <section class="slide" data-name="Phân bón hóa học">
       <div class="slide-container">
-        <div class="flex flex-col md:flex-row md:items-end justify-between pb-6 hairline-b mb-8 gap-4">
-          <div>
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Cột nội dung bên trái -->
+          <div class="lg:col-span-7">
             <span class="text-xs uppercase tracking-[0.22em] text-sun font-semibold">Nhóm 02</span>
             <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-1">
-              Phân bón hóa học
+              Phân bón <span class="italic text-sun">hóa học</span>
             </h2>
-          </div>
-          <p class="text-sm sm:text-base text-moss/75 max-w-md">
-            Được sản xuất bằng phương pháp công nghiệp, chứa các chất dinh dưỡng ở dạng cây dễ hấp thụ, giúp cây phát triển nhanh và tăng năng suất.
-          </p>
-        </div>
 
-        <div class="mb-4 text-xs uppercase tracking-[0.2em] text-moss/60 font-semibold">
-          Một số loại phổ biến
-        </div>
+            <div class="mt-5 space-y-2.5 text-sm sm:text-base text-moss/85 leading-relaxed">
+              <p>• Được sản xuất bằng phương pháp công nghiệp.</p>
+              <p>• Chứa các chất dinh dưỡng ở dạng cây dễ hấp thụ, giúp cây phát triển nhanh và tăng năng suất.</p>
+            </div>
 
-        <!-- Danh sách ngang thanh lịch không đóng hộp nặng nề -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-2">
-          <div class="pt-4 border-t-2 border-forest">
-            <span class="font-serif text-3xl sm:text-4xl text-forest font-medium">N</span>
-            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân đạm (N)</div>
+            <div class="mt-6 mb-3 text-xs uppercase tracking-[0.2em] text-moss/60 font-semibold">
+              Một số loại phổ biến
+            </div>
+
+            <!-- Danh sách 4 loại phân hóa học dạng đường kẻ trên mảnh -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-1">
+              <div class="pt-3 border-t-2 border-forest">
+                <span class="font-serif text-2xl sm:text-3xl text-forest font-medium">N</span>
+                <div class="text-sm font-semibold text-moss mt-1">Phân đạm (N)</div>
+              </div>
+              <div class="pt-3 border-t-2 border-sun">
+                <span class="font-serif text-2xl sm:text-3xl text-sun font-medium">P</span>
+                <div class="text-sm font-semibold text-moss mt-1">Phân lân (P)</div>
+              </div>
+              <div class="pt-3 border-t-2 border-leaf">
+                <span class="font-serif text-2xl sm:text-3xl text-leaf font-medium">K</span>
+                <div class="text-sm font-semibold text-moss mt-1">Phân kali (K)</div>
+              </div>
+              <div class="pt-3 border-t-2 border-moss">
+                <span class="font-serif text-2xl sm:text-3xl text-moss font-medium">NPK</span>
+                <div class="text-sm font-semibold text-moss mt-1">Hỗn hợp NPK</div>
+              </div>
+            </div>
           </div>
-          <div class="pt-4 border-t-2 border-sun">
-            <span class="font-serif text-3xl sm:text-4xl text-sun font-medium">P</span>
-            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân lân (P)</div>
-          </div>
-          <div class="pt-4 border-t-2 border-leaf">
-            <span class="font-serif text-3xl sm:text-4xl text-leaf font-medium">K</span>
-            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân kali (K)</div>
-          </div>
-          <div class="pt-4 border-t-2 border-moss">
-            <span class="font-serif text-3xl sm:text-4xl text-moss font-medium">NPK</span>
-            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân hỗn hợp NPK</div>
+
+          <!-- Cột khung hình ảnh bên phải: voco.jpg -->
+          <div class="lg:col-span-5">
+            <div class="relative aspect-[4/3] w-full rounded-3xl overflow-hidden bg-sage/70 border border-dashed border-sun/50 flex items-center justify-center">
+              <img
+                src="voco.jpg"
+                alt="Minh họa phân bón hóa học (vô cơ)"
+                class="w-full h-full object-cover"
+                onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+              />
+              <!-- Khung dự phòng hiển thị hướng dẫn khi chưa có file voco.jpg -->
+              <div class="hidden text-center p-6 flex flex-col items-center justify-center">
+                <svg class="w-10 h-10 text-sun/60 mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="text-xs uppercase tracking-widest text-sun font-semibold">Khung ảnh minh họa</span>
+                <code class="mt-1.5 px-3 py-1 rounded-full bg-ivory text-moss font-mono text-xs border border-moss/15">voco.jpg</code>
+                <p class="mt-2 text-xs text-moss/60 max-w-[220px]">Đặt file ảnh <strong>voco.jpg</strong> cùng thư mục với file HTML để tự động hiển thị.</p>
+              </div>
+            </div>
+            <p class="mt-2.5 text-center font-serif italic text-xs text-moss/60">
+              Hình 2. Phân bón hóa học (vô cơ) dạng hạt
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRANG 7: PHÂN BÓN VI SINH (Bố cục danh sách đánh số La Mã / số mảnh dọc thoáng đãng) -->
+    <!-- SLIDE 7: PHÂN BÓN VI SINH (Có khung gắn hình 'visinh.jpg' cân đối với nội dung) -->
     <section class="slide" data-name="Phân bón vi sinh">
-      <div class="slide-container max-w-4xl">
-        <div class="mb-8">
-          <span class="text-xs uppercase tracking-[0.22em] text-leaf font-semibold">Nhóm 03</span>
-          <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2">
-            Phân bón vi sinh
-          </h2>
-        </div>
+      <div class="slide-container">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Cột nội dung bên trái -->
+          <div class="lg:col-span-7">
+            <span class="text-xs uppercase tracking-[0.22em] text-leaf font-semibold">Nhóm 03</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2 mb-6">
+              Phân bón <span class="italic text-leaf">vi sinh</span>
+            </h2>
 
-        <div class="divide-y divide-moss/15">
-          <div class="py-4 sm:py-5 flex items-baseline gap-6">
-            <span class="font-serif italic text-lg text-forest w-8 shrink-0">01</span>
-            <p class="text-lg sm:text-xl text-moss">Chứa các vi sinh vật có ích.</p>
+            <div class="divide-y divide-moss/15">
+              <div class="py-3.5 flex items-baseline gap-5">
+                <span class="font-serif italic text-base text-forest w-7 shrink-0">01</span>
+                <p class="text-base sm:text-lg text-moss">Chứa các vi sinh vật có ích.</p>
+              </div>
+              <div class="py-3.5 flex items-baseline gap-5">
+                <span class="font-serif italic text-base text-forest w-7 shrink-0">02</span>
+                <p class="text-base sm:text-lg text-moss">Giúp phân giải chất hữu cơ và chuyển hóa chất dinh dưỡng.</p>
+              </div>
+              <div class="py-3.5 flex items-baseline gap-5">
+                <span class="font-serif italic text-base text-forest w-7 shrink-0">03</span>
+                <p class="text-base sm:text-lg text-moss">Hỗ trợ cây hấp thụ dinh dưỡng tốt hơn.</p>
+              </div>
+              <div class="py-3.5 flex items-baseline gap-5">
+                <span class="font-serif italic text-base text-forest w-7 shrink-0">04</span>
+                <p class="text-base sm:text-lg text-moss">Góp phần cải thiện độ phì nhiêu của đất.</p>
+              </div>
+            </div>
           </div>
-          <div class="py-4 sm:py-5 flex items-baseline gap-6">
-            <span class="font-serif italic text-lg text-forest w-8 shrink-0">02</span>
-            <p class="text-lg sm:text-xl text-moss">Giúp phân giải chất hữu cơ và chuyển hóa chất dinh dưỡng.</p>
-          </div>
-          <div class="py-4 sm:py-5 flex items-baseline gap-6">
-            <span class="font-serif italic text-lg text-forest w-8 shrink-0">03</span>
-            <p class="text-lg sm:text-xl text-moss">Hỗ trợ cây hấp thụ dinh dưỡng tốt hơn.</p>
-          </div>
-          <div class="py-4 sm:py-5 flex items-baseline gap-6">
-            <span class="font-serif italic text-lg text-forest w-8 shrink-0">04</span>
-            <p class="text-lg sm:text-xl text-moss">Góp phần cải thiện độ phì nhiêu của đất.</p>
+
+          <!-- Cột khung hình ảnh bên phải: visinh.jpg -->
+          <div class="lg:col-span-5">
+            <div class="relative aspect-[4/3] w-full rounded-3xl overflow-hidden bg-sage/70 border border-dashed border-leaf/45 flex items-center justify-center">
+              <img
+                src="visinh.jpg"
+                alt="Minh họa phân bón vi sinh"
+                class="w-full h-full object-cover"
+                onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+              />
+              <!-- Khung dự phòng hiển thị hướng dẫn khi chưa có file visinh.jpg -->
+              <div class="hidden text-center p-6 flex flex-col items-center justify-center">
+                <svg class="w-10 h-10 text-leaf/55 mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="text-xs uppercase tracking-widest text-leaf font-semibold">Khung ảnh minh họa</span>
+                <code class="mt-1.5 px-3 py-1 rounded-full bg-ivory text-moss font-mono text-xs border border-moss/15">visinh.jpg</code>
+                <p class="mt-2 text-xs text-moss/60 max-w-[220px]">Đặt file ảnh <strong>visinh.jpg</strong> cùng thư mục với file HTML để tự động hiển thị.</p>
+              </div>
+            </div>
+            <p class="mt-2.5 text-center font-serif italic text-xs text-moss/60">
+              Hình 3. Phân bón vi sinh và hệ vi sinh vật có ích trong đất
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRANG 8: VAI TRÒ CỦA PHÂN BÓN (Bố cục 2x2 mở bằng đường kẻ chữ thập tinh tế) -->
+    <!-- SLIDE 8: VAI TRÒ CỦA PHÂN BÓN -->
     <section class="slide" data-name="Vai trò của phân bón">
       <div class="slide-container">
         <div class="text-center max-w-xl mx-auto mb-10">
@@ -442,7 +513,7 @@
       </div>
     </section>
 
-    <!-- TRANG 9: CÁCH SỬ DỤNG PHÂN BÓN (Nguyên tắc 4 Đúng dạng cột đứng + Lưu ý dưới cùng) -->
+    <!-- SLIDE 9: CÁCH SỬ DỤNG PHÂN BÓN -->
     <section class="slide" data-name="Cách sử dụng phân bón">
       <div class="slide-container">
         <div class="mb-9">
@@ -479,7 +550,6 @@
           </div>
         </div>
 
-        <!-- Điểm nhấn lưu ý mềm mại -->
         <div class="py-4 px-6 rounded-full bg-sage inline-flex items-center gap-3">
           <span class="w-2 h-2 rounded-full bg-sun"></span>
           <span class="text-sm sm:text-base font-medium text-moss">
@@ -489,7 +559,7 @@
       </div>
     </section>
 
-    <!-- TRANG 10: TÁC HẠI KHI LẠM DỤNG PHÂN BÓN (Bố cục 2 cột tương phản nhẹ với điểm nhấn màu đất đỏ clay) -->
+    <!-- SLIDE 10: TÁC HẠI KHI LẠM DỤNG PHÂN BÓN -->
     <section class="slide" data-name="Tác hại khi lạm dụng phân bón">
       <div class="slide-container">
         <div class="grid lg:grid-cols-12 gap-10 items-start">
@@ -525,7 +595,7 @@
       </div>
     </section>
 
-    <!-- TRANG 11: KẾT LUẬN (Bố cục đúc kết gọn gàng, thanh thoát) -->
+    <!-- SLIDE 11: KẾT LUẬN -->
     <section class="slide" data-name="Kết luận">
       <div class="slide-container max-w-4xl">
         <div class="text-center mb-10">
@@ -558,7 +628,7 @@
       </div>
     </section>
 
-    <!-- TRANG 12: LỜI CẢM ƠN (Bố cục kết thúc tinh tế, trang trọng) -->
+    <!-- SLIDE 12: LỜI CẢM ƠN -->
     <section class="slide" data-name="Lời cảm ơn">
       <div class="slide-container text-center max-w-3xl">
         <span class="text-xs uppercase tracking-[0.28em] text-forest font-semibold">
@@ -577,16 +647,14 @@
 
   </main>
 
-  <!-- THANH ĐIỀU HƯỚNG DƯỚI CÙNG TỐI GIẢN -->
+  <!-- THANH ĐIỀU HƯỚNG DƯỚI CÙNG -->
   <footer class="fixed bottom-0 inset-x-0 z-30 px-6 sm:px-12 py-4 flex items-center justify-between bg-ivory/85 backdrop-blur-sm hairline-t">
-    <!-- Số trang hiện tại & tên phần -->
     <div class="flex items-center gap-3 text-xs sm:text-sm">
       <span id="page-indicator" class="font-serif italic text-base text-forest font-medium">01 / 12</span>
       <span class="text-moss/30">|</span>
       <span id="page-name" class="text-moss/75 truncate max-w-[150px] sm:max-w-xs">Mở đầu</span>
     </div>
 
-    <!-- Nút điều hướng Trước / Tiếp theo -->
     <div class="flex items-center gap-2 sm:gap-3">
       <button id="prev-btn" onclick="prevSlide()" class="px-4 py-2 rounded-full border border-moss/20 text-moss text-xs sm:text-sm font-medium hover:border-forest hover:text-forest disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer">
         ← Trước
@@ -597,7 +665,7 @@
     </div>
   </footer>
 
-  <!-- BẢNG MỤC LỤC NHANH (Mở khi bấm "Mục lục bài trình bày") -->
+  <!-- BẢNG MỤC LỤC NHANH -->
   <div id="menu-overlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-moss/40 backdrop-blur-xs p-4">
     <div class="bg-ivory border border-moss/15 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-xl">
       <div class="flex items-center justify-between pb-4 hairline-b">
@@ -605,7 +673,6 @@
         <button onclick="toggleMenu()" class="text-sm text-moss/60 hover:text-moss px-2 py-1 cursor-pointer">Đóng ✕</button>
       </div>
       <div id="menu-list" class="grid sm:grid-cols-2 gap-x-6 divide-y sm:divide-y-0 divide-moss/10 mt-3 max-h-[60vh] overflow-y-auto">
-        <!-- JS tự động điền danh sách 12 trang -->
       </div>
     </div>
   </div>
@@ -622,7 +689,7 @@
     const menuOverlay = document.getElementById('menu-overlay');
     const menuList = document.getElementById('menu-list');
 
-    // Tạo danh sách mục lục
+    // Tạo danh sách mục lục chọn nhanh
     slides.forEach((slide, idx) => {
       const name = slide.getAttribute('data-name');
       const item = document.createElement('button');
@@ -695,7 +762,7 @@
       }
     }
 
-    // Hỗ trợ bàn phím (Mũi tên trái/phải, Space, Escape)
+    // Điều hướng bằng bàn phím
     document.addEventListener('keydown', (e) => {
       if (!menuOverlay.classList.contains('hidden')) {
         if (e.key === 'Escape') toggleMenu();
@@ -710,7 +777,7 @@
       }
     });
 
-    // Hỗ trợ thao tác vuốt trên thiết bị cảm ứng
+    // Hỗ trợ vuốt trên màn hình cảm ứng
     let touchX = 0;
     document.addEventListener('touchstart', (e) => {
       touchX = e.changedTouches[0].screenX;
