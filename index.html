@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chuyên Đề: Phân Bón - Tổ 1</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Newsreader (Serif thanh lịch) & Be Vietnam Pro (Sans-serif hiện đại, chuẩn tiếng Việt) -->
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#F7FAF5',
+            sage: '#EFF6EE',
+            moss: '#143625',
+            forest: '#1E7E48',
+            leaf: '#2E9E5B',
+            sun: '#D9A024',
+            clay: '#B84A39'
+          },
+          fontFamily: {
+            serif: ['"Newsreader"', 'serif'],
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F7FAF5;
+      color: #143625;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Hiệu ứng chuyển slide mượt mà, nhẹ nhàng như lật trang sách */
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4.5rem 1.5rem 5.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(14px);
+      transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .slide-container {
+      width: 100%;
+      max-width: 1040px;
+      margin: auto;
+    }
+
+    /* Đường kẻ mảnh tinh tế */
+    .hairline-b {
+      border-bottom: 1px solid rgba(20, 54, 37, 0.14);
+    }
+    .hairline-t {
+      border-top: 1px solid rgba(20, 54, 37, 0.14);
+    }
+    .hairline-l {
+      border-left: 1px solid rgba(20, 54, 37, 0.18);
+    }
+
+    /* Tùy chỉnh thanh cuộn khi xem trên màn hình nhỏ */
+    .slide::-webkit-scrollbar {
+      width: 4px;
+    }
+    .slide::-webkit-scrollbar-thumb {
+      background: rgba(30, 126, 72, 0.25);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative selection:bg-forest selection:text-ivory">
+
+  <!-- Mảng màu hữu cơ mềm mại làm nền (Organic Soft Shapes) -->
+  <div class="fixed -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-sage pointer-events-none opacity-90"></div>
+  <div class="fixed -bottom-40 -left-24 w-[420px] h-[420px] rounded-full bg-[#E6F1E4] pointer-events-none opacity-80"></div>
+
+  <!-- Họa tiết nhánh lá mảnh mai góc phải trên -->
+  <svg class="fixed top-6 right-8 w-28 h-28 text-forest/15 pointer-events-none hidden sm:block" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2">
+    <path d="M100 15C65 25 40 55 25 100" stroke-linecap="round"/>
+    <path d="M62 45C50 32 32 34 28 46C40 50 53 48 62 45Z"/>
+    <path d="M46 66C32 56 16 60 14 72C26 75 38 71 46 66Z"/>
+    <path d="M76 32C88 22 104 26 105 38C93 40 82 36 76 32Z"/>
+    <path d="M58 52C74 46 88 53 86 65C74 65 64 59 58 52Z"/>
+  </svg>
+
+  <!-- Thanh đầu trang tối giản -->
+  <header class="fixed top-0 inset-x-0 z-30 px-6 sm:px-12 py-4 flex items-center justify-between bg-ivory/85 backdrop-blur-sm">
+    <div class="flex items-center gap-3">
+      <span class="w-2 h-2 rounded-full bg-forest"></span>
+      <span class="text-xs font-semibold tracking-[0.2em] uppercase text-moss/70">Tổ 1 • Chuyên đề Sinh học & Nông nghiệp</span>
+    </div>
+    <button onclick="toggleMenu()" class="text-xs font-medium text-forest hover:text-moss underline underline-offset-4 transition cursor-pointer">
+      Mục lục bài trình bày
+    </button>
+  </header>
+
+  <!-- KHU VỰC NỘI DUNG 12 TRANG -->
+  <main id="deck" class="relative w-full h-screen">
+
+    <!-- TRANG 1: MỞ ĐẦU (Bố cục trung tâm thanh thoát kiểu bìa tạp chí) -->
+    <section class="slide active" data-name="Mở đầu">
+      <div class="slide-container text-center max-w-3xl">
+        <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-forest font-semibold mb-6">
+          Bài thuyết trình nhóm • Tổ 1
+        </p>
+        <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-medium tracking-tight text-moss leading-[1.08]">
+          Phân Bón
+        </h1>
+        <div class="w-16 h-[1.5px] bg-sun mx-auto my-7"></div>
+        <p class="text-base sm:text-xl text-moss/80 font-light leading-relaxed max-w-xl mx-auto">
+          Nguồn dinh dưỡng nuôi dưỡng đất đai, thúc đẩy sự sống cây trồng và kiến tạo nền nông nghiệp xanh bền vững.
+        </p>
+        <div class="mt-11">
+          <button onclick="nextSlide()" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-moss text-ivory text-sm font-medium tracking-wide hover:bg-forest transition-colors duration-300 cursor-pointer">
+            <span>Bắt đầu</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 2: THÀNH VIÊN TỔ 1 (Danh sách 2 cột đường kẻ ngang thanh lịch, không đóng khung) -->
+    <section class="slide" data-name="Thành viên Tổ 1">
+      <div class="slide-container">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <!-- Cột tiêu đề bên trái -->
+          <div class="lg:col-span-4 lg:pt-2">
+            <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">Nhóm thực hiện</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2 leading-tight">
+              Thành viên <br/><span class="italic text-forest">Tổ 1</span>
+            </h2>
+            <p class="mt-4 text-sm sm:text-base text-moss/75 leading-relaxed">
+              Mười thành viên cùng nghiên cứu, tổng hợp nội dung và hoàn thiện bài thuyết trình.
+            </p>
+            <div class="mt-6 inline-flex items-center gap-2 text-xs font-medium text-moss/60">
+              <span class="w-6 h-[1px] bg-sun"></span>
+              <span>10 THÀNH VIÊN</span>
+            </div>
+          </div>
+
+          <!-- Cột danh sách 10 người dạng dòng kẻ mảnh -->
+          <div class="lg:col-span-8">
+            <div class="grid sm:grid-cols-2 gap-x-10">
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">01.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Nguyễn Thị Quỳnh Như</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">02.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Lê Ngọc Huyền Trân</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">03.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Trần Nguyễn Khánh Hưng</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">04.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Lê Thị Tường Lam</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">05.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Hà Kim Cương</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">06.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Đoàn Thị Ánh Dương</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">07.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Lưu Thị Tường Vy</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">08.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Bùi Ngọc Hân</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">09.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Trần Thị Bảo Thy</span>
+              </div>
+              <div class="py-3.5 hairline-b flex items-baseline gap-4">
+                <span class="font-serif italic text-sm text-forest">10.</span>
+                <span class="text-base sm:text-lg font-medium text-moss">Nguyễn Thị Ngọc Quí</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 3: KHÁI NIỆM PHÂN BÓN (Bố cục trích dẫn mở rộng + 2 ý bổ trợ dọc) -->
+    <section class="slide" data-name="Khái niệm phân bón">
+      <div class="slide-container max-w-4xl">
+        <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">I. Tổng quan</span>
+        <h2 class="font-serif text-4xl sm:text-6xl text-moss mt-2 mb-8">
+          Khái niệm phân bón
+        </h2>
+
+        <!-- Ý chính nổi bật dạng câu dẫn lớn -->
+        <div class="pl-6 sm:pl-8 border-l-2 border-forest mb-10">
+          <p class="font-serif text-2xl sm:text-3xl text-moss leading-relaxed">
+            “Phân bón là sản phẩm có chứa các <span class="text-forest italic">chất dinh dưỡng cần thiết</span> cho cây trồng.”
+          </p>
+        </div>
+
+        <!-- Hai ý tiếp theo trình bày thoáng ngang -->
+        <div class="grid sm:grid-cols-2 gap-8 pt-6 hairline-t">
+          <div>
+            <div class="text-xs font-semibold uppercase tracking-widest text-sun mb-2">Mục đích</div>
+            <p class="text-base sm:text-lg text-moss/85 leading-relaxed">
+              Được sử dụng để bổ sung dinh dưỡng cho đất và cây.
+            </p>
+          </div>
+          <div>
+            <div class="text-xs font-semibold uppercase tracking-widest text-forest mb-2">Tác động</div>
+            <p class="text-base sm:text-lg text-moss/85 leading-relaxed">
+              Giúp cây sinh trưởng, phát triển tốt và tăng năng suất.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 4: PHÂN LOẠI PHÂN BÓN (Dòng chảy 3 nhánh phân cách bằng đường kẻ dọc mảnh) -->
+    <section class="slide" data-name="Phân loại phân bón">
+      <div class="slide-container">
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">II. Hệ thống</span>
+          <h2 class="font-serif text-4xl sm:text-6xl text-moss mt-2">
+            Phân loại phân bón
+          </h2>
+          <p class="mt-3 text-base sm:text-lg text-moss/75">
+            Phân bón được chia thành <strong class="font-semibold text-forest">3 nhóm chính</strong>:
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 md:gap-0">
+          <!-- Nhánh 1 -->
+          <div class="md:pr-8">
+            <span class="font-serif italic text-3xl text-forest">01</span>
+            <h3 class="text-xl sm:text-2xl font-semibold text-moss mt-3 mb-2">
+              Phân bón hữu cơ
+            </h3>
+            <p class="text-sm sm:text-base text-moss/70 leading-relaxed">
+              Bắt nguồn từ tự nhiên, nuôi dưỡng độ màu mỡ và cấu trúc tơi xốp của đất.
+            </p>
+          </div>
+
+          <!-- Nhánh 2 -->
+          <div class="md:px-8 md:hairline-l">
+            <span class="font-serif italic text-3xl text-sun">02</span>
+            <h3 class="text-xl sm:text-2xl font-semibold text-moss mt-3 mb-2">
+              Phân bón hóa học (vô cơ)
+            </h3>
+            <p class="text-sm sm:text-base text-moss/70 leading-relaxed">
+              Sản xuất theo quy trình công nghiệp, cung cấp dưỡng chất trực tiếp, tác động nhanh.
+            </p>
+          </div>
+
+          <!-- Nhánh 3 -->
+          <div class="md:pl-8 md:hairline-l">
+            <span class="font-serif italic text-3xl text-leaf">03</span>
+            <h3 class="text-xl sm:text-2xl font-semibold text-moss mt-3 mb-2">
+              Phân bón vi sinh
+            </h3>
+            <p class="text-sm sm:text-base text-moss/70 leading-relaxed">
+              Chứa các chủng vi sinh vật có ích giúp chuyển hóa và giải phóng dinh dưỡng trong đất.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 5: PHÂN BÓN HỮU CƠ (Bố cục bất đối xứng 2 cột: Tiêu đề & Ví dụ bên trái - Danh sách bên phải) -->
+    <section class="slide" data-name="Phân bón hữu cơ">
+      <div class="slide-container">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5">
+            <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">Nhóm 01</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2 leading-tight">
+              Phân bón <br/><span class="italic text-forest">hữu cơ</span>
+            </h2>
+            <div class="mt-6 p-5 rounded-2xl bg-sage">
+              <div class="text-xs font-semibold uppercase tracking-wider text-forest mb-1">Ví dụ phổ biến</div>
+              <p class="text-base font-medium text-moss">
+                Phân chuồng, phân xanh, phân compost.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-6">
+            <div class="pb-5 hairline-b flex gap-5">
+              <span class="text-forest font-serif italic text-xl">•</span>
+              <p class="text-lg sm:text-xl text-moss leading-relaxed">
+                Có nguồn gốc từ chất thải động vật, thực vật và các chất hữu cơ.
+              </p>
+            </div>
+            <div class="pb-5 hairline-b flex gap-5">
+              <span class="text-forest font-serif italic text-xl">•</span>
+              <p class="text-lg sm:text-xl text-moss leading-relaxed">
+                Giúp cải tạo đất, tăng độ tơi xốp.
+              </p>
+            </div>
+            <div class="flex gap-5">
+              <span class="text-forest font-serif italic text-xl">•</span>
+              <p class="text-lg sm:text-xl text-moss leading-relaxed">
+                Bổ sung chất hữu cơ và dinh dưỡng cho đất.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 6: PHÂN BÓN HÓA HỌC (Bố cục phân tầng: Đặc điểm trên - Bảng liệt kê nguyên tố N, P, K, NPK dưới) -->
+    <section class="slide" data-name="Phân bón hóa học">
+      <div class="slide-container">
+        <div class="flex flex-col md:flex-row md:items-end justify-between pb-6 hairline-b mb-8 gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-[0.22em] text-sun font-semibold">Nhóm 02</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-1">
+              Phân bón hóa học
+            </h2>
+          </div>
+          <p class="text-sm sm:text-base text-moss/75 max-w-md">
+            Được sản xuất bằng phương pháp công nghiệp, chứa các chất dinh dưỡng ở dạng cây dễ hấp thụ, giúp cây phát triển nhanh và tăng năng suất.
+          </p>
+        </div>
+
+        <div class="mb-4 text-xs uppercase tracking-[0.2em] text-moss/60 font-semibold">
+          Một số loại phổ biến
+        </div>
+
+        <!-- Danh sách ngang thanh lịch không đóng hộp nặng nề -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-2">
+          <div class="pt-4 border-t-2 border-forest">
+            <span class="font-serif text-3xl sm:text-4xl text-forest font-medium">N</span>
+            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân đạm (N)</div>
+          </div>
+          <div class="pt-4 border-t-2 border-sun">
+            <span class="font-serif text-3xl sm:text-4xl text-sun font-medium">P</span>
+            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân lân (P)</div>
+          </div>
+          <div class="pt-4 border-t-2 border-leaf">
+            <span class="font-serif text-3xl sm:text-4xl text-leaf font-medium">K</span>
+            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân kali (K)</div>
+          </div>
+          <div class="pt-4 border-t-2 border-moss">
+            <span class="font-serif text-3xl sm:text-4xl text-moss font-medium">NPK</span>
+            <div class="text-base sm:text-lg font-semibold text-moss mt-2">Phân hỗn hợp NPK</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 7: PHÂN BÓN VI SINH (Bố cục danh sách đánh số La Mã / số mảnh dọc thoáng đãng) -->
+    <section class="slide" data-name="Phân bón vi sinh">
+      <div class="slide-container max-w-4xl">
+        <div class="mb-8">
+          <span class="text-xs uppercase tracking-[0.22em] text-leaf font-semibold">Nhóm 03</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2">
+            Phân bón vi sinh
+          </h2>
+        </div>
+
+        <div class="divide-y divide-moss/15">
+          <div class="py-4 sm:py-5 flex items-baseline gap-6">
+            <span class="font-serif italic text-lg text-forest w-8 shrink-0">01</span>
+            <p class="text-lg sm:text-xl text-moss">Chứa các vi sinh vật có ích.</p>
+          </div>
+          <div class="py-4 sm:py-5 flex items-baseline gap-6">
+            <span class="font-serif italic text-lg text-forest w-8 shrink-0">02</span>
+            <p class="text-lg sm:text-xl text-moss">Giúp phân giải chất hữu cơ và chuyển hóa chất dinh dưỡng.</p>
+          </div>
+          <div class="py-4 sm:py-5 flex items-baseline gap-6">
+            <span class="font-serif italic text-lg text-forest w-8 shrink-0">03</span>
+            <p class="text-lg sm:text-xl text-moss">Hỗ trợ cây hấp thụ dinh dưỡng tốt hơn.</p>
+          </div>
+          <div class="py-4 sm:py-5 flex items-baseline gap-6">
+            <span class="font-serif italic text-lg text-forest w-8 shrink-0">04</span>
+            <p class="text-lg sm:text-xl text-moss">Góp phần cải thiện độ phì nhiêu của đất.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 8: VAI TRÒ CỦA PHÂN BÓN (Bố cục 2x2 mở bằng đường kẻ chữ thập tinh tế) -->
+    <section class="slide" data-name="Vai trò của phân bón">
+      <div class="slide-container">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">III. Giá trị thực tiễn</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2">
+            Vai trò của phân bón
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2">
+          <div class="p-6 sm:p-8 sm:border-r sm:border-b border-moss/15">
+            <span class="text-xs font-semibold tracking-widest text-forest uppercase">01 • Dinh dưỡng</span>
+            <p class="font-serif text-xl sm:text-2xl text-moss mt-2 leading-snug">
+              Cung cấp chất dinh dưỡng cho cây trồng.
+            </p>
+          </div>
+
+          <div class="p-6 sm:p-8 border-t sm:border-t-0 sm:border-b border-moss/15">
+            <span class="text-xs font-semibold tracking-widest text-leaf uppercase">02 • Phát triển</span>
+            <p class="font-serif text-xl sm:text-2xl text-moss mt-2 leading-snug">
+              Thúc đẩy quá trình sinh trưởng và phát triển.
+            </p>
+          </div>
+
+          <div class="p-6 sm:p-8 border-t sm:border-t-0 sm:border-r border-moss/15">
+            <span class="text-xs font-semibold tracking-widest text-sun uppercase">03 • Hiệu quả</span>
+            <p class="font-serif text-xl sm:text-2xl text-moss mt-2 leading-snug">
+              Tăng năng suất và chất lượng nông sản.
+            </p>
+          </div>
+
+          <div class="p-6 sm:p-8 border-t sm:border-t-0 border-moss/15">
+            <span class="text-xs font-semibold tracking-widest text-forest uppercase">04 • Bền vững</span>
+            <p class="font-serif text-xl sm:text-2xl text-moss mt-2 leading-snug">
+              Cải thiện độ phì nhiêu của đất.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 9: CÁCH SỬ DỤNG PHÂN BÓN (Nguyên tắc 4 Đúng dạng cột đứng + Lưu ý dưới cùng) -->
+    <section class="slide" data-name="Cách sử dụng phân bón">
+      <div class="slide-container">
+        <div class="mb-9">
+          <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">IV. Nguyên tắc canh tác</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2">
+            Cách sử dụng phân bón
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-10">
+          <div class="hairline-l pl-4">
+            <div class="font-serif italic text-2xl text-forest mb-2">Đúng loại</div>
+            <p class="text-sm sm:text-base text-moss/85 leading-relaxed">
+              Sử dụng đúng loại phân phù hợp với cây trồng.
+            </p>
+          </div>
+          <div class="hairline-l pl-4">
+            <div class="font-serif italic text-2xl text-forest mb-2">Đúng liều</div>
+            <p class="text-sm sm:text-base text-moss/85 leading-relaxed">
+              Bón đúng liều lượng.
+            </p>
+          </div>
+          <div class="hairline-l pl-4">
+            <div class="font-serif italic text-2xl text-forest mb-2">Đúng lúc</div>
+            <p class="text-sm sm:text-base text-moss/85 leading-relaxed">
+              Bón đúng thời điểm.
+            </p>
+          </div>
+          <div class="hairline-l pl-4">
+            <div class="font-serif italic text-2xl text-forest mb-2">Đúng cách</div>
+            <p class="text-sm sm:text-base text-moss/85 leading-relaxed">
+              Bón đúng phương pháp.
+            </p>
+          </div>
+        </div>
+
+        <!-- Điểm nhấn lưu ý mềm mại -->
+        <div class="py-4 px-6 rounded-full bg-sage inline-flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-sun"></span>
+          <span class="text-sm sm:text-base font-medium text-moss">
+            Lưu ý quan trọng: <strong class="text-forest">Không lạm dụng phân bón hóa học.</strong>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 10: TÁC HẠI KHI LẠM DỤNG PHÂN BÓN (Bố cục 2 cột tương phản nhẹ với điểm nhấn màu đất đỏ clay) -->
+    <section class="slide" data-name="Tác hại khi lạm dụng phân bón">
+      <div class="slide-container">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5">
+            <span class="text-xs uppercase tracking-[0.22em] text-clay font-semibold">V. Hệ lụy môi trường</span>
+            <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2 leading-tight">
+              Tác hại khi <br/><span class="italic text-clay">lạm dụng</span> phân bón
+            </h2>
+            <p class="mt-4 text-sm sm:text-base text-moss/75 leading-relaxed">
+              Việc sử dụng quá mức, thiếu kiểm soát sẽ phá vỡ cân bằng tự nhiên của hệ sinh thái nông nghiệp.
+            </p>
+          </div>
+
+          <div class="lg:col-span-7 divide-y divide-moss/15">
+            <div class="py-4 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-clay shrink-0"></span>
+              <p class="text-lg sm:text-xl text-moss">Làm đất bị chai cứng, thoái hóa.</p>
+            </div>
+            <div class="py-4 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-clay shrink-0"></span>
+              <p class="text-lg sm:text-xl text-moss">Gây ô nhiễm nguồn nước và môi trường.</p>
+            </div>
+            <div class="py-4 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-clay shrink-0"></span>
+              <p class="text-lg sm:text-xl text-moss">Làm mất cân bằng dinh dưỡng trong đất.</p>
+            </div>
+            <div class="py-4 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-clay shrink-0"></span>
+              <p class="text-lg sm:text-xl text-moss">Ảnh hưởng đến sự phát triển của cây trồng.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 11: KẾT LUẬN (Bố cục đúc kết gọn gàng, thanh thoát) -->
+    <section class="slide" data-name="Kết luận">
+      <div class="slide-container max-w-4xl">
+        <div class="text-center mb-10">
+          <span class="text-xs uppercase tracking-[0.22em] text-forest font-semibold">VI. Tổng kết</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-moss mt-2">
+            Kết luận
+          </h2>
+        </div>
+
+        <div class="space-y-5 max-w-2xl mx-auto">
+          <div class="flex items-start gap-4 pb-4 hairline-b">
+            <span class="text-forest font-semibold mt-0.5">✓</span>
+            <p class="text-lg sm:text-xl text-moss">Phân bón đóng vai trò quan trọng trong sản xuất nông nghiệp.</p>
+          </div>
+          <div class="flex items-start gap-4 pb-4 hairline-b">
+            <span class="text-forest font-semibold mt-0.5">✓</span>
+            <p class="text-lg sm:text-xl text-moss">Cần sử dụng phân bón hợp lý và tiết kiệm.</p>
+          </div>
+          <div class="flex items-start gap-4 pb-4 hairline-b">
+            <span class="text-forest font-semibold mt-0.5">✓</span>
+            <p class="text-lg sm:text-xl text-moss">Kết hợp các loại phân bón phù hợp.</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-forest font-semibold mt-0.5">✓</span>
+            <p class="text-lg sm:text-xl text-moss font-medium text-forest">
+              Góp phần bảo vệ môi trường và phát triển nông nghiệp bền vững.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANG 12: LỜI CẢM ƠN (Bố cục kết thúc tinh tế, trang trọng) -->
+    <section class="slide" data-name="Lời cảm ơn">
+      <div class="slide-container text-center max-w-3xl">
+        <span class="text-xs uppercase tracking-[0.28em] text-forest font-semibold">
+          Tổ 1 • Kết thúc phần trình bày
+        </span>
+        <h2 class="font-serif text-3xl sm:text-5xl md:text-6xl text-moss mt-5 leading-tight">
+          Cảm ơn thầy cô và các bạn <br/>
+          <span class="italic text-forest">đã lắng nghe.</span>
+        </h2>
+        <div class="w-16 h-[1.5px] bg-sun mx-auto my-8"></div>
+        <button onclick="goToSlide(0)" class="text-sm font-medium text-moss/70 hover:text-forest underline underline-offset-4 transition cursor-pointer">
+          Trình chiếu lại từ đầu
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- THANH ĐIỀU HƯỚNG DƯỚI CÙNG TỐI GIẢN -->
+  <footer class="fixed bottom-0 inset-x-0 z-30 px-6 sm:px-12 py-4 flex items-center justify-between bg-ivory/85 backdrop-blur-sm hairline-t">
+    <!-- Số trang hiện tại & tên phần -->
+    <div class="flex items-center gap-3 text-xs sm:text-sm">
+      <span id="page-indicator" class="font-serif italic text-base text-forest font-medium">01 / 12</span>
+      <span class="text-moss/30">|</span>
+      <span id="page-name" class="text-moss/75 truncate max-w-[150px] sm:max-w-xs">Mở đầu</span>
+    </div>
+
+    <!-- Nút điều hướng Trước / Tiếp theo -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button id="prev-btn" onclick="prevSlide()" class="px-4 py-2 rounded-full border border-moss/20 text-moss text-xs sm:text-sm font-medium hover:border-forest hover:text-forest disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer">
+        ← Trước
+      </button>
+      <button id="next-btn" onclick="nextSlide()" class="px-5 py-2 rounded-full bg-moss text-ivory text-xs sm:text-sm font-medium hover:bg-forest disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer">
+        Tiếp theo →
+      </button>
+    </div>
+  </footer>
+
+  <!-- BẢNG MỤC LỤC NHANH (Mở khi bấm "Mục lục bài trình bày") -->
+  <div id="menu-overlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-moss/40 backdrop-blur-xs p-4">
+    <div class="bg-ivory border border-moss/15 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-xl">
+      <div class="flex items-center justify-between pb-4 hairline-b">
+        <h3 class="font-serif text-2xl text-moss">Mục lục trình bày</h3>
+        <button onclick="toggleMenu()" class="text-sm text-moss/60 hover:text-moss px-2 py-1 cursor-pointer">Đóng ✕</button>
+      </div>
+      <div id="menu-list" class="grid sm:grid-cols-2 gap-x-6 divide-y sm:divide-y-0 divide-moss/10 mt-3 max-h-[60vh] overflow-y-auto">
+        <!-- JS tự động điền danh sách 12 trang -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+
+    const pageIndicator = document.getElementById('page-indicator');
+    const pageName = document.getElementById('page-name');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const menuList = document.getElementById('menu-list');
+
+    // Tạo danh sách mục lục
+    slides.forEach((slide, idx) => {
+      const name = slide.getAttribute('data-name');
+      const item = document.createElement('button');
+      item.className = 'menu-item py-2.5 text-left flex items-baseline gap-3 hover:text-forest transition cursor-pointer hairline-b';
+      item.innerHTML = `
+        <span class="font-serif italic text-xs text-forest">${String(idx + 1).padStart(2, '0')}.</span>
+        <span class="text-sm font-medium text-moss truncate">${name}</span>
+      `;
+      item.onclick = () => {
+        goToSlide(idx);
+        toggleMenu();
+      };
+      menuList.appendChild(item);
+    });
+
+    function render() {
+      slides.forEach((s, i) => {
+        if (i === current) {
+          s.classList.add('active');
+          s.scrollTop = 0;
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      pageIndicator.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+      pageName.textContent = slides[current].getAttribute('data-name');
+
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+
+      document.querySelectorAll('.menu-item').forEach((el, i) => {
+        const label = el.querySelector('span:last-child');
+        if (i === current) {
+          label.classList.add('text-forest', 'font-semibold');
+        } else {
+          label.classList.remove('text-forest', 'font-semibold');
+        }
+      });
+    }
+
+    function goToSlide(idx) {
+      if (idx >= 0 && idx < total) {
+        current = idx;
+        render();
+      }
+    }
+
+    function nextSlide() {
+      if (current < total - 1) {
+        current++;
+        render();
+      }
+    }
+
+    function prevSlide() {
+      if (current > 0) {
+        current--;
+        render();
+      }
+    }
+
+    function toggleMenu() {
+      if (menuOverlay.classList.contains('hidden')) {
+        menuOverlay.classList.remove('hidden');
+        menuOverlay.classList.add('flex');
+      } else {
+        menuOverlay.classList.add('hidden');
+        menuOverlay.classList.remove('flex');
+      }
+    }
+
+    // Hỗ trợ bàn phím (Mũi tên trái/phải, Space, Escape)
+    document.addEventListener('keydown', (e) => {
+      if (!menuOverlay.classList.contains('hidden')) {
+        if (e.key === 'Escape') toggleMenu();
+        return;
+      }
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+
+    // Hỗ trợ thao tác vuốt trên thiết bị cảm ứng
+    let touchX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      const diff = touchX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    }, { passive: true });
+
+    render();
+  </script>
+</body>
+</html>
